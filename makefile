@@ -2,7 +2,7 @@
 lexlib=l
 bindir=.
 rm=/bin/rm -f
-targets=leftcontext-inp reject simpletok simplebigram rmcomments idtoken tokenizer
+targets=simpletok rmcomments idtoken tokenizer
 assignments=rmcomments idtoken tokenizer
 
 all: $(targets) move
@@ -18,6 +18,7 @@ clean:
 	$(rm) $(targets)
 	$(rm) *.pyc
 	$(rm) *~
+	$(rm) *.yy.c
 
 test:
 	python check-hw1.py -d answer/ testcases/
