@@ -1,3 +1,4 @@
+//TODO: Bug on multiline comments
 %{
 #include <stdio.h>
 #define SINGLELINE 256
@@ -11,7 +12,7 @@ num [0-9]+
 
 \"(.|\n)*\"	{return -1;}
 \/\/.*		{return SINGLELINE; }
-\/\*(.|\n)*\*\/	{return MULTILINE; }
+\/\*[^*]*\*+(?:[^*/][^*]*\*+)*\/	{return MULTILINE; }
 [.\n]		{ return -1; }
 
 %%
