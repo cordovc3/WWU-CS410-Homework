@@ -2,8 +2,8 @@
 lexlib=l
 bindir=.
 rm=/bin/rm -f
-targets=simpletok rmcomments idtoken tokenizer
-assignments=rmcomments idtoken tokenizer
+targets=simpletok rmcomments idtoken tokenizer decaflex
+assignments=rmcomments idtoken tokenizer decaflex
 
 all: $(targets) move
 
@@ -27,3 +27,4 @@ move:
 	cp rmcomments answer/rmcomments
 	cp tokenizer answer/tokenizer
 	cp idtoken answer/idtoken
+	cp decaflex answer/decaflex
