@@ -1,4 +1,3 @@
-//TODO: Bug on multiline comments
 %{
 #include <stdio.h>
 #define SINGLELINE 256
