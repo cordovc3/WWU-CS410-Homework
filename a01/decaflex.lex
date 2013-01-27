@@ -64,6 +64,7 @@ num [0-9]+
 "bool"	{return T_BOOL;}
 "break"	{return T_BREAK;}
 
+">="     {return T_GEQ;}
 %%
 
 int main () {
