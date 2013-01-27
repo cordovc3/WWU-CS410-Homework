@@ -59,8 +59,10 @@ num [0-9]+
 
 %%
 
-&&	{return T_AND;}
-=	{return T_ASSIGN;}
+"&&"	{return T_AND;}
+"="	{return T_ASSIGN;}
+"bool"	{return T_BOOL;}
+"break"	{return T_BREAK;}
 
 %%
 
