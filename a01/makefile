@@ -5,26 +5,22 @@ rm=/bin/rm -f
 targets=simpletok rmcomments idtoken tokenizer decaflex
 assignments=rmcomments idtoken tokenizer decaflex
 
-all: $(targets) move
+all: $(targets) 
 
-$(targets): %: %.lex
+$(targets): %: %.lex 
 	@echo "compiling lex file:" $<
 	@echo "output file:" $@
 	flex -o$@.c $<
 	gcc -o $(bindir)/$@ $@.c -l$(lexlib)
 	$(rm) $@.c
-
+	cp $@ answer/$@
 clean:
 	$(rm) $(targets)
 	$(rm) *.pyc
 	$(rm) *~
 	$(rm) *.yy.c
+	$(rm) answer/*
 
 test:
 	python check-hw1.py -d answer/ testcases/
 
-move:
-	cp rmcomments answer/rmcomments
-	cp tokenizer answer/tokenizer
-	cp idtoken answer/idtoken
-	cp decaflex answer/decaflex
