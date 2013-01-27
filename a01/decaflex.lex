@@ -57,7 +57,6 @@ num [0-9]+
 "="		{printf("T_ASSIGN %s\n", yylex());}
 "bool"		{printf(" T_BOOL %s\n", yylex());}
 "break"		{printf("T_BREAK %s\n", yylex());}
-
 "class" 	{printf("T_CLASS %s\n", yylex());}
 "//".*"\\n"	{prtinf("T_COMMENT %s\n", yylex());}
 ","		{printf("T_COMMA %s", yylex());}
@@ -73,10 +72,31 @@ num [0-9]+
 ">="     	{printf("T_GEQ %s\n", yylex());}
 ">"		{printf("T_GT %s\n", yylext());}
 "if"		{printf("T_IF %s\n", yylext());}
-
 "int"		{printf("T_INTTYPE %s\n", yylext());}
 "{"		{printf("T_LCB %s\n", yylext());}
 "<<"		{printf("T_LEFTSHIFT %s\n", yylext());}
+"("  {printf("T_LPAREN %s\n", yylex());}
+"["  {printf("T_LSB %s\n", yylex());}
+"<"  {printf("T_LT %s\n", yylex());}
+"-"  {printf("T_MINUS %s\n", yylex());}
+"%"  {printf("T_MOD %s\n", yylex());}
+"*"  {printf("T_MULT %s\n", yylex());}
+"!="  {printf("T_NEQ %s\n", yylex());}
+"new"  {printf("T_NEW %s\n", yylex());}
+"!"  {printf("T_NOT %s\n", yylex());}
+"null" {printf("T_NULL %s\n", yylex());}
+"||" {printf("T_OR %s\n", yylex());}
+"+" {printf("T_PLUS %s\n", yylex());}
+"}" {printf("T_RCB %s\n", yylex());}
+"return" {printf("T_RETURN %s\n", yylex());}
+">>" {printf("T_RIGHTSHIFT %s\n", yylex());}
+")" {printf("T_RPAREN %s\n", yylex());}
+"]" {printf("T_RSB %s\n", yylex());}
+";" {printf("T_SEMICOLON %s\n", yylex());}
+"true" {printf("T_TRUE %s\n", yylex());}
+"string"  {printf("T_STRINGTYPE %s\n", yylex());}
+"void" {printf("T_VOID %s\n", yylex());}
+"while" {printf("T_WHILE %s\n", yylex());}
 
 
 
