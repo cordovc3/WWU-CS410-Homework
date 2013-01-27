@@ -62,6 +62,7 @@ num [0-9]+
 &&	{return T_AND;}
 =	{return T_ASSIGN;}
 
+">="     {return T_GEQ;}
 %%
 
 int main () {
