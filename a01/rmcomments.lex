@@ -26,7 +26,7 @@ int main () {
       	}
       	break;
       case MULTILINE:
-      	for(i = 0; i<= (int) yyleng; i++) {
+      	for(i = 0; i< (int) yyleng; i++) {
       		if(yytext[i] == '\n') {printf("\n");}
       		else {printf(" ");}
       	}
