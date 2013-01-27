@@ -1,11 +1,5 @@
 %{
 #include <stdio.h>
-#define SINGLELINE 256
-#define MULTILINE  257
-#define AND	   258
-#define T_ASSIGN   259
-#define T_BOOLTYPE 260
-#define T_BREAK    261
 #define T_CHARCONSTANT 262
 #define T_CLASS    263
 #define T_COMMENT  264
@@ -59,12 +53,33 @@ num [0-9]+
 
 %%
 
-"&&"	{return T_AND;}
-"="	{return T_ASSIGN;}
-"bool"	{return T_BOOL;}
-"break"	{return T_BREAK;}
+"&&"		{printf("T_AND %s\n", yylex());}
+"="		{printf("T_ASSIGN %s\n", yylex());}
+"bool"		{printf(" T_BOOL %s\n", yylex());}
+"break"		{printf("T_BREAK %s\n", yylex());}
 
-">="     {return T_GEQ;}
+"class" 	{printf("T_CLASS %s\n", yylex());}
+"//".*"\\n"	{prtinf("T_COMMENT %s\n", yylex());}
+","		{printf("T_COMMA %s", yylex());}
+"continue"	{printf("T_CONTINUE %s\n", yylex());}
+"/"		{printf("T_DIV %s\n", yylex());}
+"."		{printf("T_DOT %s\n", yyleX());}
+"else"		{printf("T_ELSE %s\n", yylex());}
+"=="		{printf("T_EQ %s\n", yylex());}
+"extends"	{printf("T_EXTENDS %s\n", yyleX());}
+"extern"	{printf("T_EXTERN %s\n", yylex());}
+"false"		{printf("T_FALSE %s\n", yylex());}
+"for"		{printf("T_FOR %s\n", yylex());}
+">="     	{printf("T_GEQ %s\n", yylex());}
+">"		{printf("T_GT %s\n", yylext());}
+"if"		{printf("T_IF %s\n", yylext());}
+
+"int"		{printf("T_INTTYPE %s\n", yylext());}
+"{"		{printf("T_LCB %s\n", yylext());}
+"<<"		{printf("T_LEFTSHIFT %s\n", yylext());}
+
+
+
 %%
 
 int main () {
