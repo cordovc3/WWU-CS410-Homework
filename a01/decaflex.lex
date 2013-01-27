@@ -53,50 +53,50 @@ num [0-9]+
 
 %%
 
-"&&"		{printf("T_AND %s\n", yylex());}
-"="		{printf("T_ASSIGN %s\n", yylex());}
-"bool"		{printf(" T_BOOL %s\n", yylex());}
-"break"		{printf("T_BREAK %s\n", yylex());}
-"class" 	{printf("T_CLASS %s\n", yylex());}
-"//".*"\\n"	{prtinf("T_COMMENT %s\n", yylex());}
-","		{printf("T_COMMA %s", yylex());}
-"continue"	{printf("T_CONTINUE %s\n", yylex());}
-"/"		{printf("T_DIV %s\n", yylex());}
-"."		{printf("T_DOT %s\n", yyleX());}
-"else"		{printf("T_ELSE %s\n", yylex());}
-"=="		{printf("T_EQ %s\n", yylex());}
-"extends"	{printf("T_EXTENDS %s\n", yyleX());}
-"extern"	{printf("T_EXTERN %s\n", yylex());}
-"false"		{printf("T_FALSE %s\n", yylex());}
-"for"		{printf("T_FOR %s\n", yylex());}
-">="     	{printf("T_GEQ %s\n", yylex());}
-">"		{printf("T_GT %s\n", yylext());}
-"if"		{printf("T_IF %s\n", yylext());}
-"int"		{printf("T_INTTYPE %s\n", yylext());}
-"{"		{printf("T_LCB %s\n", yylext());}
-"<<"		{printf("T_LEFTSHIFT %s\n", yylext());}
-"("  {printf("T_LPAREN %s\n", yylex());}
-"["  {printf("T_LSB %s\n", yylex());}
-"<"  {printf("T_LT %s\n", yylex());}
-"-"  {printf("T_MINUS %s\n", yylex());}
-"%"  {printf("T_MOD %s\n", yylex());}
-"*"  {printf("T_MULT %s\n", yylex());}
-"!="  {printf("T_NEQ %s\n", yylex());}
-"new"  {printf("T_NEW %s\n", yylex());}
-"!"  {printf("T_NOT %s\n", yylex());}
-"null" {printf("T_NULL %s\n", yylex());}
-"||" {printf("T_OR %s\n", yylex());}
-"+" {printf("T_PLUS %s\n", yylex());}
-"}" {printf("T_RCB %s\n", yylex());}
-"return" {printf("T_RETURN %s\n", yylex());}
-">>" {printf("T_RIGHTSHIFT %s\n", yylex());}
-")" {printf("T_RPAREN %s\n", yylex());}
-"]" {printf("T_RSB %s\n", yylex());}
-";" {printf("T_SEMICOLON %s\n", yylex());}
-"true" {printf("T_TRUE %s\n", yylex());}
-"string"  {printf("T_STRINGTYPE %s\n", yylex());}
-"void" {printf("T_VOID %s\n", yylex());}
-"while" {printf("T_WHILE %s\n", yylex());}
+"&&"		{printf("T_AND %s\n", yytext);}
+"="		{printf("T_ASSIGN %s\n", yytext);}
+"bool"		{printf(" T_BOOL %s\n", yytext);}
+"break"		{printf("T_BREAK %s\n", yytext);}
+"class" 	{printf("T_CLASS %s\n", yytext);}
+"//".*"\\n"	{printf("T_COMMENT %s\n", yytext);}
+","		{printf("T_COMMA %s", yytext);}
+"continue"	{printf("T_CONTINUE %s\n", yytext);}
+"/"		{printf("T_DIV %s\n", yytext);}
+"."		{printf("T_DOT %s\n", yytext);}
+"else"		{printf("T_ELSE %s\n", yytext);}
+"=="		{printf("T_EQ %s\n", yytext);}
+"extends"	{printf("T_EXTENDS %s\n", yytext);}
+"extern"	{printf("T_EXTERN %s\n", yytext);}
+"false"		{printf("T_FALSE %s\n", yytext);}
+"for"		{printf("T_FOR %s\n", yytext);}
+">="     	{printf("T_GEQ %s\n", yytext);}
+">"		{printf("T_GT %s\n", yytext);}
+"if"		{printf("T_IF %s\n", yytext);}
+"int"		{printf("T_INTTYPE %s\n", yytext);}
+"{"		{printf("T_LCB %s\n", yytext);}
+"<<"		{printf("T_LEFTSHIFT %s\n", yytext);}
+"("  {printf("T_LPAREN %s\n", yytext);}
+"["  {printf("T_LSB %s\n", yytext);}
+"<"  {printf("T_LT %s\n", yytext);}
+"-"  {printf("T_MINUS %s\n", yytext);}
+"%"  {printf("T_MOD %s\n", yytext);}
+"*"  {printf("T_MULT %s\n", yytext);}
+"!="  {printf("T_NEQ %s\n", yytext);}
+"new"  {printf("T_NEW %s\n", yytext);}
+"!"  {printf("T_NOT %s\n", yytext);}
+"null" {printf("T_NULL %s\n", yytext);}
+"||" {printf("T_OR %s\n", yytext);}
+"+" {printf("T_PLUS %s\n", yytext);}
+"}" {printf("T_RCB %s\n", yytext);}
+"return" {printf("T_RETURN %s\n", yytext);}
+">>" {printf("T_RIGHTSHIFT %s\n", yytext);}
+")" {printf("T_RPAREN %s\n", yytext);}
+"]" {printf("T_RSB %s\n", yytext);}
+";" {printf("T_SEMICOLON %s\n", yytext);}
+"true" {printf("T_TRUE %s\n", yytext);}
+"string"  {printf("T_STRINGTYPE %s\n", yytext);}
+"void" {printf("T_VOID %s\n", yytext);}
+"while" {printf("T_WHILE %s\n", yytext);}
 
 
 
@@ -106,17 +106,6 @@ int main () {
   int token; int i;
   while ((token = yylex())) {
     switch (token) {
-      case SINGLELINE: 
-      	for(i = 0; i <= (int) yyleng; i++) {
-      		printf(" ");
-      	}
-      	break;
-      case MULTILINE:
-      	for(i = 0; i<= (int) yyleng; i++) {
-      		if(yytext[i] == '\n') {printf("\n");}
-      		else {printf(" ");}
-      	}
-      	break;
       default: printf("%s", yytext);
     }
   }
