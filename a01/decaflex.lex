@@ -1,64 +1,26 @@
 %{
 #include <stdio.h>
-#define T_CHARCONSTANT 262
-#define T_CLASS    263
-#define T_COMMENT  264
-#define T_COMMA    265
-#define T_CONTINUE 266
-#define T_DIV      267
-#define T_DOT      268
-#define T_ELSE	   269
-#define T_EQ	   270
-#define T_EXTENDS  271
-#define T_EXTERN   272
-#define T_FALSE    273
-#define T_FOR      274
-#define T_GEQ      278
-#define T_GT  	   279
-#define T_IF       280
-#define T_INTCONSTANT 281
-#define T_INTTYPE  282
-#define T_LCB      283
-#define T_LEFTSHIFT 284
-#define T_LEQ      285
-#define T_LPAREN   286
-#define T_LSB      287
-#define T_LT       289
-#define T_MINUS    290
-#define T_MOD      291
-#define T_MULT     292
-#define T_NEQ      293
-#define T_NEW      294
-#define T_NOT      295
-#define T_NULL     296
-#define T_OR       297
-#define T_PLUS     298
-#define T_RCB      299
-#define T_RETURN   300
-#define T_RIGHTSHIFT 301
-#define T_RPAREN   302
-#define T_RSB      303
-#define T_SEMICOLON 304
-#define T_STRINGTYPE 305
-#define T_STRINGCONSTANT 306
-#define T_TRUE     307
-#define T_VOID     308
-#define T_WHILE    309
-#define T_ID       310
-#define T_WHITESPACE 311
+#define UNTERM_S 100
 %}  
 
 /* regexp definitions */
-num [0-9]+
 
 %%
+
+
 
 "&&"		{printf("T_AND %s\n", yytext);}
 "="		{printf("T_ASSIGN %s\n", yytext);}
 "bool"		{printf(" T_BOOL %s\n", yytext);}
 "break"		{printf("T_BREAK %s\n", yytext);}
 "class" 	{printf("T_CLASS %s\n", yytext);}
-"//".*"\\n"	{printf("T_COMMENT %s\n", yytext);}
+"//".*\n	{int i;
+		printf("T_COMMENT ");
+			for(i=0; i< (int) yyleng - 1; i++) {
+				printf("%c", yytext[i]);
+				}
+			printf("\\n\n");
+		}	
 ","		{printf("T_COMMA %s", yytext);}
 "continue"	{printf("T_CONTINUE %s\n", yytext);}
 "/"		{printf("T_DIV %s\n", yytext);}
@@ -98,6 +60,19 @@ num [0-9]+
 "void" {printf("T_VOID %s\n", yytext);}
 "while" {printf("T_WHILE %s\n", yytext);}
 
+[\t\n\v\r\ ]+	{int i; 
+		printf("T_WHITESPACE ");
+		for (i = 0; i < (int) yyleng; i++) {
+			if(yytext[i] == '\n') printf("\\n");
+			else printf("%c", yytext[i]);
+		}
+		printf("\n");
+		}
+(0x[0-9a-fA-F]+)|([0-9]+) {printf("T_INTCONSTANT %s\n", yytext);}
+\".+\"	{printf("T_STRINGCONSTANT %s\n", yytext);}
+\'(.|\\.)\'		{printf("T_CHARCONSTANT %s\n", yytext);}
+
+[a-zA-Z_][a-zA-Z0-9_]*	{printf("T_ID %s\n", yytext);}
 
 
 %%
