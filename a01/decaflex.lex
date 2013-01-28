@@ -8,6 +8,32 @@
 %%
 
 
+''		{fprintf(stderr, "Error: empty character");
+			exit(1);
+		}
+'''		{fprintf(stderr, "Error: unescaped ' character");
+			exit(1);
+		}
+'[^\\].'	{fprintf(stderr, "Error: char const length is greater than one");
+			exit(1);
+		}
+\"\"		{fprintf(stderr, "Error: empty string");
+			exit(1);
+		}
+'\\'		{fprintf(stderr, "Error: unescaped character");
+			exit(1);
+		}
+\"\"\"		{fprintf(stderr, "Error: unterminated string constant");
+			exit(1);
+		}
+\"\\[^tnvfrab\"]?\"	{fprintf(stderr, "Error: invalid escape character");
+				exit(1);
+			}
+\"\n\"		{fprintf(stderr, "Error: newline mid string literal");
+			exit(1);
+		}
+
+
 
 "&&"		{printf("T_AND %s\n", yytext);}
 "="		{printf("T_ASSIGN %s\n", yytext);}
@@ -59,6 +85,10 @@
 "string"  {printf("T_STRINGTYPE %s\n", yytext);}
 "void" {printf("T_VOID %s\n", yytext);}
 "while" {printf("T_WHILE %s\n", yytext);}
+
+\\[^tnvfr]	{fprintf(stderr, "Error: invalid escape character");
+			exit(1);
+		}
 
 [\t\n\v\r\ ]+	{int i; 
 		printf("T_WHITESPACE ");

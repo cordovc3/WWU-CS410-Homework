@@ -20,7 +20,7 @@ clean:
 	$(rm) *~
 	$(rm) *.yy.c
 	$(rm) answer/*
-
+	$(rm) \#*#
 test:
 	python check-hw1.py -d answer/ testcases/
 
