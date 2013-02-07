@@ -1,6 +1,7 @@
 /* WWU CS 410 A02
    QuickSort implementation in decaf
-   By: Charles Cordova, Nicholas Beichley, j
+   By: Charles Cordova, Nicholas Beichley, Joshua Wisdom, Kyle Coffin
+   Winter 2012
 */
 
 //is callout("print_string", "...") legal? I can't find anything in specs about it
