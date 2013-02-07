@@ -36,3 +36,11 @@ clean:
 	$(rm) $(targets) $(cpptargets)
 	$(rm) *.tab.h *.tab.c *.lex.c
 	$(rm) *.pyc
+	$(rm) *\#
+	$(rm) *~
+
+cpp:
+	mv quicksort.decaf quicksort.cpp
+
+decaf:
+	 mv quicksort.cpp quicksort.decaf
