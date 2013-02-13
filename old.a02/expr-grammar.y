@@ -14,7 +14,7 @@ expression: expression '+' T_NUMBER
    | expression '+' T_DOUBLE
    | expression '-' T_DOUBLE
    | expression '+' T_NAME 
-   | expression '-' T_NAME 
+r  | expression '-' T_NAME 
    | T_NUMBER
    | T_DOUBLE
    | T_NAME 

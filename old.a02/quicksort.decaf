@@ -3,7 +3,7 @@
    By: Charles Cordova, Nicholas Beichley, Joshua Wisdom, Kyle Coffin
    Winter 2012
 */
-
+//TODO: figure out printing, use print_int or whatever
 //is callout("print_string", "...") legal? I can't find anything in specs about it
 class QuickSort {
 

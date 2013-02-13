@@ -44,3 +44,7 @@ cpp:
 
 decaf:
 	 mv quicksort.cpp quicksort.decaf
+
+simple:
+	lex simpletok.lex
+	gcc lex.yy.c -ll
