@@ -1,1 +1,0 @@
-Program(None,Class(QuickSort,FieldDecl(list,IntType,Array(100)),Method(main,None,MethodBlock(None,None))))

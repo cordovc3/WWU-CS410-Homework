@@ -1,7 +1,0 @@
-class C {
-	void f() {
-		if (leftPtr >= rightPtr) {
-			x = 1;
-		}
-	}
-}
