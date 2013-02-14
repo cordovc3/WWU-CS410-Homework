@@ -53,5 +53,5 @@ testall: $(targets) $(cpptargets)
 
 clean:
 	$(rm) $(targets) $(cpptargets)
-	$(rm) *.tab.h *.tab.c *.lex.c
+	$(rm) *.tab.h *.tab.c *.lex.c *.tab.cc *.lex.cc
 
