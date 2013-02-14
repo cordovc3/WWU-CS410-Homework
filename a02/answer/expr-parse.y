@@ -29,3 +29,25 @@
   string *sval;
 }
 
+%token PLUS TIMES LPAREN RPAREN ID
+
+%%
+
+e	:	e PLUS t { printf("E goes to e plus t action\n");}
+	|	t		 { printf("E goes to t\n");}
+	;
+
+t	:	t TIMES f { printf("T goes to t times t action \n"); }
+	|	f		  { printf("T goes to f\n"); }
+	;
+
+f	:	LPAREN e RPAREN	{ printf("f goes to lparen e rparen\n"); }
+	|	ID				{ printf("f goes to id\n"); }
+	;
+
+%%
+
+int main() {
+	return yyparse();
+}
+
