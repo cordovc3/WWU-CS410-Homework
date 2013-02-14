@@ -1,1 +1,0 @@
-Program(ExternFunction(print_int,VoidType,VarDef(IntType)),ExternFunction(print_string,VoidType,VarDef(StringType)),Class(QuickSort,FieldDecl(x,IntType,Scalar),Method(main,None,MethodBlock(None,None))))
