@@ -25,24 +25,31 @@
 
 %}
 
-/* %union {
+%type <sval> f 
+%type<sval> e
+%type<sval> t
+
+%union {
   string *sval;
-} */
+}
 
-%token PLUS TIMES LPAREN RPAREN ID
-
+%token <sval> PLUS "+"
+%token <sval> TIMES "*"
+%token <sval> LPAREN
+%token <sval> RPAREN
+%token ID
 %%
 
-e	:	e PLUS t {  cout << "E goes to e plus t action\n";}
-	|	t		 { cout << "E goes to t\n";}
+e	:	e PLUS t {  $$ = build_tree($$, 3, $1, $2, $3);}
+	|	t		 {$$ = build_tree($$, 1, $1); }
 	;
 
-t	:	t TIMES f { cout << "T goes to t times t action \n"; }
-	|	f		  { cout << "T goes to f\n"; }
+t	:	t TIMES f { $$ = build_tree($$, 3, $1, $2, $3); }
+	|	f		  { $$ = build_tree($$, 1, $1);  }
 	;
 
-f	:	LPAREN e RPAREN	{ cout << "f goes to lparen e rparen\n"; }
-	|	ID				{ cout << "f goes to id\n"; }
+f	:	LPAREN e RPAREN	{ $$ = build_tree($$, 3, $1, $2, $3); } 
+	|	ID				{   }
 	;
 
 %%
