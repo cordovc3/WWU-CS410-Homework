@@ -4,8 +4,8 @@ yacclib=y
 bindir=.
 rm=/bin/rm -f
 mv=/bin/mv -f
-targets= expr-parse
-cpptargets=expr-interpreter expr-parse decaf-parse
+targets= #expr-parse
+cpptargets=decaf-parse #expr-interpreter expr-parse decaf-parse
 
 all: $(targets) $(cpptargets)
 
