@@ -1,4 +1,5 @@
 %{
+using namespace std;
 #include "decaf-parse-defs.h"
 #include "decaf-parse.tab.h"
 #include <cstring>
@@ -7,7 +8,6 @@
 #include <cstdlib>
 #include <iostream>
 
-  using namespace std;
   
   int lineno = 0;
   int tokenpos = 0;
