@@ -2,6 +2,6 @@ cd answer
 make clean
 make
 cd ..  
-python check-hw2.py answer/ testcases/ > diffs.diff
+python check-hw2.py -d answer/ testcases/ 2> diffs.diff  2> diffs.diff  > diffs.diff
 cd answer
 make clean
