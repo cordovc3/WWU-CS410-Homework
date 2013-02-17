@@ -469,6 +469,24 @@ bool_constant: T_TRUE
   }
      ;
 
+assign	:	
+	;
+
+assign_comma_list	:
+			;
+
+method_arg	:
+		;
+
+method_arg_list	:
+		;
+
+method_call	:
+		;
+
+statement	:
+		;
+
 %%
 
 

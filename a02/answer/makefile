@@ -5,7 +5,7 @@ bindir=.
 rm=/bin/rm -f
 mv=/bin/mv -f
 targets= #expr-parse
-cpptargets=expr-parse #decaf-parse expr-interpreter expr-parse decaf-parse
+cpptargets=expr-parse decaf-parse #expr-interpreter expr-parse decaf-parse
 
 all: $(targets) $(cpptargets)
 
