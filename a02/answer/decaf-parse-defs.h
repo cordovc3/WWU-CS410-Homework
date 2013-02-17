@@ -1,3 +1,8 @@
+/*WWU CS410 HW2 Q5
+    Josh Wisdom
+    Kyle Coffin
+    Charles Cordova
+    Nicholas Beichley */
 
 #ifndef _DECAF_PARSER_DEFS
 #define _DECAF_PARSER_DEFS

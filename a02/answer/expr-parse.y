@@ -1,4 +1,10 @@
 %{
+/*WWU CS410 HW2 Q5
+    Josh Wisdom
+    Kyle Coffin
+    Charles Cordova
+    Nicholas Beichley */
+
 #include "expr-parse-defs.h"
 #include <cstring>
 #include <string>

@@ -1,4 +1,10 @@
 %{
+/*WWU CS410 HW2 Q5
+    Josh Wisdom
+    Kyle Coffin
+    Charles Cordova
+    Nicholas Beichley */
+
 using namespace std;
 #include "decaf-parse-defs.h"
 #include "decaf-parse.tab.h"
