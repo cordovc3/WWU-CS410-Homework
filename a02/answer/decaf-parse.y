@@ -475,32 +475,46 @@ bool_constant: T_TRUE
   }
      ;
 
-assign	: T_ID expr
-	{ $$ = build_tree("assign", 2, $1, $2); }
+assign	: lvalue T_ASSIGN expr 
+	{ $$ = build_tree("assign", 3, $1, $2, $3); }
 	| T_ID expr expr	
+	{ $$ = build_tree("assign", 3, $1, $2, $3); }
 	;
 
 assign_comma_list	:  assign assign_comma_list
+			{ $$ = build_tree("assign_comma_list", 2, $1, $2); }
 			;
 
 method_arg	: T_STRINGCONSTANT
+		{ $$ = build_tree("method_arg", 1, $1); }
 		| expr
+		{ $$ = build_tree("method_arg", 1, $1); }
 		;
 
-method_arg_list	: method method_arg_list
+method_arg_list	: method_arg method_arg_list
+		{ $$ = build_tree("method_arg_list", 2, $1, $2); }
 		;
 
 method_call	: T_ID method_arg
+		{ $$ = build_tree("method_call", 2, $1, $2); }
 		;
 
-statement	: assign
-		| method_call
-		| expr T_IF block T_ELSE block
-		| expr T_WHILE block
+statement	: assign T_SEMICOLON
+		{ $$ = build_tree("statement", 2, $1, $2); }
+		| method_call T_SEMICOLON
+		{ $$ = build_tree("statement", 2, $1, $2); }
+		| T_IF T_LPAREN expr T_RPAREN block T_ELSE block
+		{ $$ = build_tree("statement", 7, $1, $2, $3, $4, $5, $6, $7); }
+		| T_WHILE T_LPAREN expr T_RPAREN block
+		{ $$ = build_tree("statement", 5, $1, $2, $3, $4, $5); }
 		| assign expr assign
-		| expr T_RETURN
+		{ $$ = build_tree("statement", 3, $1, $2, $3); } 
+		| T_RETURN T_SEMICOLON
+		{ $$ = build_tree("statement", 2, $1, $2); }
 		| T_BREAK
+		{ $$ = build_tree("statement", 1, $1); }
 		| T_CONTINUE 
+		{ $$ = build_tree("statement", 1, $1); }
 		;
 
 %%
