@@ -477,13 +477,9 @@ bool_constant: T_TRUE
 
 assign	: lvalue T_ASSIGN expr 
 	{ $$ = build_tree("assign", 3, $1, $2, $3); }
-	| T_ID expr expr	
-	{ $$ = build_tree("assign", 3, $1, $2, $3); }
 	;
 
-assign_comma_list	:  assign assign_comma_list
-			{ $$ = build_tree("assign_comma_list", 2, $1, $2); }
-			| assign
+assign_comma_list	: assign
 			{ $$ = build_tree("assign_comma_list", 1, $1); }
 			;
 
@@ -527,6 +523,8 @@ statement	: assign T_SEMICOLON
 		{ $$ = build_tree("statement", 2, $1, $2); }
 		| T_FOR T_LPAREN assign_comma_list T_SEMICOLON expr T_SEMICOLON assign_comma_list T_RPAREN block
 		{ $$ = build_tree("statement", 9, $1, $2, $3, $4, $5, $6, $7, $8, $9); }
+		| block
+		{ $$ = build_tree("statement", 1, $1); }
 		;
 
 %%
