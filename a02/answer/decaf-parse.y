@@ -483,6 +483,8 @@ assign	: lvalue T_ASSIGN expr
 
 assign_comma_list	:  assign assign_comma_list
 			{ $$ = build_tree("assign_comma_list", 2, $1, $2); }
+			| assign
+			{ $$ = build_tree("assign_comma_list", 1, $1); }
 			;
 
 method_arg	: T_STRINGCONSTANT
@@ -491,12 +493,16 @@ method_arg	: T_STRINGCONSTANT
 		{ $$ = build_tree("method_arg", 1, $1); }
 		;
 
-method_arg_list	: method_arg method_arg_list
-		{ $$ = build_tree("method_arg_list", 2, $1, $2); }
+method_arg_list	: method_arg T_COMMA  method_arg_list
+		{ $$ = build_tree("method_arg_list", 3, $1, $2, $3); }
+		| method_arg
+		{ $$ = build_tree("method_arg_list", 1, $1); }
 		;
 
-method_call	: T_ID method_arg
-		{ $$ = build_tree("method_call", 2, $1, $2); }
+method_call	: T_ID T_LPAREN method_arg_list T_RPAREN
+		{ $$ = build_tree("method_call", 4, $1, $2, $3, $4); }
+		| T_ID T_LPAREN T_RPAREN
+		{ $$ = build_tree("method_call", 3, $1, $2, $3); }
 		;
 
 statement	: assign T_SEMICOLON
@@ -505,16 +511,22 @@ statement	: assign T_SEMICOLON
 		{ $$ = build_tree("statement", 2, $1, $2); }
 		| T_IF T_LPAREN expr T_RPAREN block T_ELSE block
 		{ $$ = build_tree("statement", 7, $1, $2, $3, $4, $5, $6, $7); }
+		| T_IF T_LPAREN expr T_RPAREN block 
+		{ $$ = build_tree("statement", 5, $1, $2, $3, $4, $5); }
 		| T_WHILE T_LPAREN expr T_RPAREN block
 		{ $$ = build_tree("statement", 5, $1, $2, $3, $4, $5); }
-		| assign expr assign
-		{ $$ = build_tree("statement", 3, $1, $2, $3); } 
 		| T_RETURN T_SEMICOLON
 		{ $$ = build_tree("statement", 2, $1, $2); }
-		| T_BREAK
-		{ $$ = build_tree("statement", 1, $1); }
-		| T_CONTINUE 
-		{ $$ = build_tree("statement", 1, $1); }
+		| T_RETURN T_LPAREN expr T_RPAREN T_SEMICOLON
+		{ $$ = build_tree("statement", 5, $1, $2, $3, $4, $5); }
+		| T_RETURN T_LPAREN T_RPAREN T_SEMICOLON
+		{ $$ = build_tree("statement", 4, $1, $2, $3, $4); }
+		| T_BREAK T_SEMICOLON
+		{ $$ = build_tree("statement", 2, $1, $2); }
+		| T_CONTINUE T_SEMICOLON
+		{ $$ = build_tree("statement", 2, $1, $2); }
+		| T_FOR T_LPAREN assign_comma_list T_SEMICOLON expr T_SEMICOLON assign_comma_list T_RPAREN block
+		{ $$ = build_tree("statement", 9, $1, $2, $3, $4, $5, $6, $7, $8, $9); }
 		;
 
 %%
