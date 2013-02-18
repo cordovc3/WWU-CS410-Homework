@@ -475,22 +475,32 @@ bool_constant: T_TRUE
   }
      ;
 
-assign	:	
+assign	: T_ID expr
+	{ $$ = build_tree("assign", 2, $1, $2); }
+	| T_ID expr expr	
 	;
 
-assign_comma_list	:
+assign_comma_list	:  assign assign_comma_list
 			;
 
-method_arg	:
+method_arg	: T_STRINGCONSTANT
+		| expr
 		;
 
-method_arg_list	:
+method_arg_list	: method method_arg_list
 		;
 
-method_call	:
+method_call	: T_ID method_arg
 		;
 
-statement	:
+statement	: assign
+		| method_call
+		| expr T_IF block T_ELSE block
+		| expr T_WHILE block
+		| assign expr assign
+		| expr T_RETURN
+		| T_BREAK
+		| T_CONTINUE 
 		;
 
 %%
