@@ -1,2 +1,0 @@
-Program(ExternFunction(print_string,VoidType,VarDef(StringType)),Class(Print,None,Method(main,None,MethodBlock(None,MethodCall(print_string,StringConstant("	
-\"))))))

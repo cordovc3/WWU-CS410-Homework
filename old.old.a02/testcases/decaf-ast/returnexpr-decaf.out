@@ -1,1 +1,0 @@
-Program(None,Class(C,None,Method(f,None,MethodBlock(None,ReturnStmt(VariableExpr(x))))))

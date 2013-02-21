@@ -1,1 +1,0 @@
-Program(None,Class(QuickSort,None,Method(swap,VarDef(leftPtr,IntType),VarDef(rightPtr,IntType),MethodBlock(VarDef(temp,IntType),AssignVar(temp,ArrayLocExpr(list,VariableExpr(leftPtr))),AssignArrayLoc(list,VariableExpr(leftPtr),ArrayLocExpr(list,VariableExpr(rightPtr))),AssignArrayLoc(list,VariableExpr(rightPtr),VariableExpr(temp))))))
